@@ -7,33 +7,51 @@
     <style>
         body { margin: 0; padding: 0; font-family: 'Arial Black', sans-serif; background: #1a0033; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
         
-        /* Passcode Page */
-        #lock-screen { text-align: center; background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: 20px; border: 3px solid #ff00ff; width: 85%; max-width: 300px; z-index: 100; backdrop-filter: blur(10px); }
-        input { width: 80%; padding: 15px; margin-bottom: 20px; border-radius: 10px; border: none; font-size: 1.5rem; text-align: center; }
-        button { background: #ff00ff; color: white; border: none; padding: 15px; font-weight: bold; border-radius: 10px; width: 100%; cursor: pointer; }
-        .creator-tag { font-size: 0.8rem; color: #ffd700; margin-top: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        /* THE OPENING WINDOW (LOCK SCREEN) */
+        #lock-screen { 
+            text-align: center; 
+            background: rgba(255, 255, 255, 0.1); 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 3px solid #ff00ff; 
+            width: 85%; 
+            max-width: 320px; 
+            z-index: 100; 
+            backdrop-filter: blur(10px); 
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+        }
+
+        /* BIG ZOOMING NAME ON OPENING WINDOW */
+        .opening-name {
+            font-size: 2.2rem;
+            color: #ffd700;
+            margin-bottom: 20px;
+            animation: superZoom 2s ease-in-out infinite;
+            font-weight: 900;
+            display: block;
+            text-shadow: 2px 2px 10px #ff1493;
+        }
+        @keyframes superZoom {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        input { width: 85%; padding: 15px; margin-bottom: 20px; border-radius: 10px; border: none; font-size: 1.5rem; text-align: center; background: #fff; color: #000; }
+        button { background: #ff00ff; color: white; border: none; padding: 15px; font-weight: bold; border-radius: 10px; width: 100%; cursor: pointer; font-size: 1.1rem; }
         
-        /* Content */
+        .creator-tag { font-size: 0.8rem; color: #ffd700; margin-top: 15px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+        
+        /* CONTENT (INSIDE WINDOW) */
         #content { display: none; text-align: center; width: 100%; height: 100vh; overflow-y: auto; padding-bottom: 50px; }
         
         .flash-text { font-size: 2.5rem; animation: rapidFlash 0.1s infinite; margin: 15px 0; font-weight: bold; }
         @keyframes rapidFlash { 0% { color: #800080; } 100% { color: #ff0000; } }
 
-        /* Huge Zooming Text */
-        .big-zoom-text {
-            font-size: 3.5rem; /* VERY BIG */
-            color: #ffd700;
-            margin: 30px 0;
-            animation: superZoom 2s ease-in-out infinite;
-            font-weight: 900;
-            display: block;
-            text-shadow: 0 0 20px #ff1493;
-        }
-        @keyframes superZoom {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.4); }
-            100% { transform: scale(1); }
-        }
-    </script>
-</body>
-</html>
+        .kiss-container { width: 85%; max-width: 400px; margin: 10px auto; border-radius: 15px; overflow: hidden; border: 4px solid #ff1493; }
+        .kiss-gif { width: 100%; display: block; }
+
+        .slides-box { width: 85%; max-width: 400px; margin: 20px auto; border: 3px solid white; border-radius: 15px; overflow: hidden; display: none; }
+        .mySlides { width: 100%; height: auto; display: none; }
+        
+        .modal { display: none; position: fixed; z
