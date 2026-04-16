@@ -3,35 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For CHINNU</title>
+    <title>Sree ❤️ Chinnu</title>
     <style>
-        /* Base Styles */
+        /* Force background to be purple */
         body { 
-            margin: 0; padding: 0; font-family: 'Arial Black', sans-serif; 
-            background: #1a0033; color: white; overflow: hidden;
-            display: flex; justify-content: center; align-items: center; height: 100vh;
+            background-color: #1a0033 !important; 
+            margin: 0; padding: 0; 
+            font-family: sans-serif;
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; color: white;
         }
 
-        /* 1. OPENING WINDOW (LOCK SCREEN) */
+        /* The Box - Force it to show */
         #lock-screen { 
-            text-align: center; background: rgba(255, 255, 255, 0.1); 
-            padding: 30px; border-radius: 20px; border: 3px solid #ff00ff; 
-            width: 85%; max-width: 320px; z-index: 100; backdrop-filter: blur(10px); 
+            display: block !important;
+            text-align: center; 
+            background: rgba(255, 255, 255, 0.2); 
+            padding: 40px 20px; 
+            border-radius: 20px; 
+            border: 4px solid #ff00ff; 
+            width: 280px;
+            box-shadow: 0 0 20px #ff00ff;
         }
 
-        /* The Zooming Name on Opening Window */
         .opening-name {
-            font-size: 2.2rem; color: #ffd700; margin-bottom: 20px;
-            animation: zoomPulse 2s ease-in-out infinite;
-            font-weight: 900; text-shadow: 2px 2px 10px #ff1493;
-        }
-        @keyframes zoomPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
+            font-size: 2rem; color: #ffd700; margin-bottom: 20px;
+            font-weight: bold; text-shadow: 2px 2px #000;
         }
 
-        input { width: 85%; padding: 15px; margin-bottom: 20px; border-radius: 10px; border: none; font-size: 1.5rem; text-align: center; }
-        button { background: #ff00ff; color: white; border: none; padding: 15px; font-weight: bold; border-radius: 10px; width: 100%; cursor: pointer; }
+        input { width: 80%; padding: 12px; margin-bottom: 20px; font-size: 1.2rem; border-radius: 8px; border: none; }
+        button { background: #ff00ff; color: white; border: none; padding: 12px 30px; font-weight: bold; border-radius: 8px; cursor: pointer; width: 80%; }
 
-        /* 2. MAIN CONTENT (SECRET WINDOW) */
-        #content { display: none; text-align: center; width: 100%; height: 100vh;
+        /* Content - Hidden until code entered */
+        #content { display: none; text-align: center; width: 100%; height: 100vh; overflow-y: auto; background: #1a0033; }
+        
+        .flash { font-size: 2.5rem; color: red; font-weight: bold; margin-top: 20px; }
+        .kiss-gif { width: 90%; max-width: 350px; border-radius: 15px; margin: 20px 0; border: 3px solid #ff1493; }
+        .popper { position: absolute; top: -50px; animation: fall 3s linear forwards; font-size: 25px; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div id="lock-screen">
+        <div class="opening-name">sree ❤️ chinnu</div>
+        <p>Enter Passcode</p>
+        <input type="number" id="pin" placeholder="251015">
+        <button onclick="check()">UNLOCK</button>
+        <div style="margin-top:15px; font-size:0.7rem;">Creator RAM</div>
+    </div>
+
+    <div id="content">
+        <div class="flash">I LOVE YOU</div>
+        <img src="https://media.giphy.com/media/l4pTfx2qLszoEOnQI/giphy.gif" class="kiss-gif">
+        <h1 style="color:#ffd700;">10 YEARS! 🥂</h1>
+        <p style="font-size: 1.2rem;">i love you and ummmah! ❤️</p>
+    </div>
+
+    <script>
+        function check() {
+            var val = document.getElementById('pin').value;
+            if (val == "251015") {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+                
+                // Start Purple Infinity Symbols
+                setInterval(function() {
+                    var p = document.createElement('div');
+                    p.className = 'popper';
+                    p.innerHTML = '♾️💜';
+                    p.style.left = Math.random() * 90 + 'vw';
+                    document.body.appendChild(p);
+                    setTimeout(function() { p.remove(); }, 3000);
+                }, 200);
+            } else {
+                alert("Wrong Code!");
+            }
+        }
+    </script>
+</body>
+</html>
