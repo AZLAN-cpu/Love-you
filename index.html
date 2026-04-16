@@ -1,145 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10 Years with CHINNU</title>
-    <style>
-        body {
-            margin: 0; padding: 0;
-            font-family: 'Arial Black', sans-serif;
-            background-color: #1a0033; 
-            color: white;
-            display: flex; justify-content: center; align-items: center;
-            height: 100vh; overflow: hidden;
-        }
-
-        /* Passcode Screen */
-        #lock-screen {
-            text-align: center; background: rgba(255, 255, 255, 0.1);
-            padding: 30px; border-radius: 20px;
-            border: 3px solid #ff00ff; z-index: 100;
-            backdrop-filter: blur(10px); width: 85%; max-width: 300px;
-        }
-
-        /* Creator Mention */
-        .creator-tag {
-            font-size: 0.8rem;
-            color: #ffd700;
-            margin-top: 15px;
-            letter-spacing: 2px;
-            font-family: sans-serif;
-            text-transform: uppercase;
-        }
-
-        input {
-            width: 80%; padding: 15px; margin-bottom: 20px;
-            border-radius: 10px; border: none; font-size: 1.5rem; text-align: center;
-        }
-        button {
-            background: #ff00ff; color: white; border: none;
-            padding: 15px 30px; font-weight: bold; border-radius: 10px; width: 100%;
-        }
-
-        /* Rapid Color Change for "I Love You" */
-        .flash-text {
-            font-size: 3rem; font-weight: 900;
-            animation: rapidFlash 0.1s infinite; /* Instant flashing */
-            margin: 20px 0;
-            text-align: center;
-        }
-        @keyframes rapidFlash {
-            0%, 49% { color: #800080; } /* Purple */
-            50%, 100% { color: #ff0000; } /* Red */
-        }
-
-        /* Party Popper Animation */
-        .popper {
-            position: absolute; font-size: 24px; z-index: 1;
-            animation: fly 2.5s linear forwards; top: 110%;
-        }
-        @keyframes fly {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
-        }
-
-        #content { display: none; text-align: center; width: 100%; height: 100vh; overflow-y: auto; z-index: 2; padding-bottom: 50px; }
-
-        /* Slideshow */
-        .slides-box {
-            width: 90%; max-width: 400px; height: 350px;
-            margin: 20px auto; border: 5px solid white; border-radius: 15px;
-            overflow: hidden; position: relative; background: #000;
-        }
-        .mySlides { display: none; width: 100%; height: 100%; object-fit: cover; }
-
-        /* Pop-up Modal */
-        .modal {
-            display: none; position: fixed; z-index: 200;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); justify-content: center; align-items: center;
-        }
-        .modal-content { text-align: center; width: 90%; }
-        .umma-text { font-size: 1.2rem; color: white; margin-top: 10px; }
-    </style>
-</head>
-<body>
-
-    <div id="lock-screen">
-        <h2 style="color: #ff00ff; margin-top:0;">🔒 Enter Secret Code</h2>
-        <input type="number" id="passcode" placeholder="Pin: 251015" inputmode="numeric">
-        <button onclick="unlock()">UNLOCK SURPRISE</button>
-        <div class="creator-tag">Creator RAM</div>
-    </div>
-
-    <div id="content">
-        <div class="flash-text">I LOVE YOU</div>
-        <h2 style="color: #ffd700;">10 YEARS CELEBRATION! 🥂</h2>
+<script>
+    function unlock() {
+        // This line gets what you typed in the box
+        const pin = document.getElementById('passcode').value;
         
-        <div class="slides-box">
-            <img src="https://via.placeholder.com/400x500?text=Photo+1" class="mySlides">
-            <img src="https://via.placeholder.com/400x500?text=Photo+2" class="mySlides">
-            <img src="https://via.placeholder.com/400x500?text=Photo+3" class="mySlides">
-        </div>
-
-        <p style="font-size: 1.2rem; padding: 20px;">i love you and ummmmmmmmmmmmmmmaaaaaahh..... ❤️</p>
-        <div class="creator-tag" style="margin-bottom: 30px;">Created with love by RAM</div>
-    </div>
-
-    <div id="popup" class="modal">
-        <div class="modal-content">
-            <div style="font-size: 6rem; animation: kissAnim 0.5s infinite alternate;">💋</div>
-            <div class="flash-text">I LOVE YOU</div>
-            <p class="umma-text">ummmmmmmmmmmmmmmaaaaaahh.....</p>
-            <button onclick="closePopup()" style="background:white; color:black; padding:15px 30px; border-radius:15px; margin-top:20px; font-weight:bold;">Open 10-Year Memories</button>
-        </div>
-    </div>
-
-    <script>
-        // Unlock Logic
-        function unlock() {
-            const pin = document.getElementById('passcode').value;
-            if(pin === '251015') {
-                document.getElementById('lock-screen').style.display = 'none';
-                document.getElementById('content').style.display = 'block';
-                document.getElementById('popup').style.display = 'flex';
-                
-                startPoppers(); // Starts the 10-year celebration poppers
-                showSlides();
-            } else {
-                alert("Incorrect Pin, RAM's secret is safe!");
-            }
+        // This checks if the pin is exactly 251015
+        if(pin === '251015') {
+            document.getElementById('lock-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('popup').style.display = 'flex';
+            
+            startPoppers(); 
+            showSlides();
+        } else {
+            alert("Incorrect Pin!");
         }
-
-        function closePopup() {
-            document.getElementById('popup').style.display = 'none';
-        }
-
-        // 10 Years Celebration Party Poppers
-        function startPoppers() {
-            const emojis = ['🎉', '🎊', '🥳', '🎈', '❤️', '💋', '💎', '🔥'];
-            setInterval(() => {
-                const p = document.createElement('div');
-                p.className = 'popper';
-                p.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-                p.style.left = Math.random() * 100 + 'vw';
+    }
+</script>
